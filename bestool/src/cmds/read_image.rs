@@ -40,7 +40,7 @@ fn do_read_flash_data(
     length: usize,
 ) -> Result<(), BESLinkError> {
     let mut flash_content: Vec<u8> = vec![];
-    const MAX_READ_BEFORE_RESET: usize = 1024 * 1024; //1MiB chunks
+    const MAX_READ_BEFORE_RESET: usize = 1024 * 128; //128kB chunks
     while flash_content.len() < length {
         let chunk_length = {
             if (length - flash_content.len()) < MAX_READ_BEFORE_RESET {
