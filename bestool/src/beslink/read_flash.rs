@@ -46,7 +46,7 @@ fn read_flash_chunk(
         payload: vec![0x05, 0x08], // No idea what these two mean yet
         checksum: 0xF6,
     };
-    let chunk_size = FLASH_BUFFER_SIZE / 2;
+    let chunk_size = FLASH_BUFFER_SIZE / 2 / 4;
     cfg_data_1.payload.extend((address as u32).to_le_bytes());
     cfg_data_1.payload.extend((chunk_size as u32).to_le_bytes());
     cfg_data_1.set_checksum();
