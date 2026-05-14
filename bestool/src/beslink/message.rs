@@ -133,6 +133,11 @@ pub fn read_message_with_trailing_data(
             }
         }
     }
+
+    if packet.len() > expected_data_len {
+        info!("got more than we asked for {:X?}", packet);
+    }
+
     Ok((response, packet))
 }
 pub fn read_message(serial_port: &mut Box<dyn SerialPort>) -> Result<BesMessage, BESLinkError> {
